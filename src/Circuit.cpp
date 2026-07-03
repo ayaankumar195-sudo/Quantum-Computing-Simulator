@@ -25,6 +25,8 @@ void Circuit::addGate (char type, int control, int target) {
         throw std::invalid_argument("Invalid control Qubit index");
     } else if (target < 0 || target >= this->numOfQubits) {
         throw std::invalid_argument("Invalid target Qubit index");
+    } else if (control == target) {
+        throw std::invalid_argument("Control and target Qubit must be different");
     }
 
     this->factory->addGate(type, control, target);
